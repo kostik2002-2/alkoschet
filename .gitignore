@@ -1,0 +1,18 @@
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Node dependencies (if they appear later)
+node_modules/
+
+# Local AI helper
+.ai-bridge/
+
+Запустить CodexPro.bat

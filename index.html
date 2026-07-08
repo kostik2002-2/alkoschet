@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Алкосчёт — калькулятор алкоголя на свадьбу онлайн</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="description" content="Онлайн-калькулятор алкоголя и напитков на свадьбу: шампанское, вино, крепкий алкоголь, вода и соки. Мгновенный расчет по количеству гостей и формату банкета." />
+  <meta name="keywords" content="расчет алкоголя на свадьбу, калькулятор алкоголя на свадьбу, сколько алкоголя нужно на свадьбу, сколько шампанского на свадьбу, расчет напитков для свадьбы" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:title" content="Алкосчёт — калькулятор напитков на свадьбу" />
+  <meta property="og:description" content="Романтичный и практичный расчет алкоголя, воды и соков для свадебного банкета." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alkoschet.cinemaprompt.ru/" />
+  <meta property="og:image" content="img/og-image.png" />
+  <meta property="og:image:alt" content="Алкосчёт — калькулятор напитков на свадьбу" />
+  <link rel="canonical" href="https://alkoschet.cinemaprompt.ru/" />
+  <meta name="theme-color" content="#fcfbf9" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Алкосчёт",
+    "applicationCategory":"CalculatorApplication",
+    "operatingSystem":"Any",
+    "description":"Калькулятор алкоголя и напитков на свадьбу с мгновенным расчетом.",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},
+    "featureList":["Расчет шампанского", "Расчет вина", "Расчет крепкого алкоголя", "Расчет воды и соков", "Список покупок"]
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="petals" aria-hidden="true"></div><div class="cursor" aria-hidden="true"></div>
+  <main class="app">
+    <header class="top">
+      <a class="brand" href="#" data-route="home" aria-label="На главную">
+        <div class="logo"><img src="logo.png" alt="Логотип Алкосчёт"></div>
+        <div>
+          <h1>Алкосчёт</h1>
+          <p>Расчёт алкоголя на свадьбу</p>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Разделы сайта">
+        <button type="button" class="active" data-route="home">Калькулятор</button>
+        <button type="button" data-route="traditions">Застолья России</button>
+        <button type="button" data-route="a20">На 20 гостей</button>
+        <button type="button" data-route="a50">На 50 гостей</button>
+        <button type="button" data-route="a100">На 100 гостей</button>
+        <button type="button" data-route="faq">Вопросы</button>
+      </nav>
+    </header>
+
+    <section class="screen" id="homeScreen">
+      <div class="card input-card">
+        <div class="kicker">свадебный расчет без паники</div>
+        <h2 class="hero-title">
+  Чтобы <span>всего хватило</span><br>
+  и ничего лишнего
+</h2>
+        <p class="sub">Введите параметры банкета, а список напитков появится сразу. Расчет намеренно практичный.</p>
+        <div class="form" aria-label="Параметры расчета">
+          <div class="field"><label for="guests">Гостей всего</label><input id="guests" type="number" min="10" max="1000" value="50"></div>
+          <div class="field"><label for="nonDrinkers">Непьющих и детей</label><input id="nonDrinkers" type="number" min="0" value="8"></div>
+          <div class="field"><label for="men">Пьющих мужчин</label><input id="men" type="number" min="0" value="22"></div>
+          <div class="field"><label for="hours">Длительность, часов</label><input id="hours" type="number" min="4" max="8" value="7"></div>
+          <div class="field"><label for="food">Горячее</label><select id="food"><option value="meat">Мясо / плотное меню</option><option value="fish">Рыба / легкое меню</option><option value="mixed">Смешанное меню</option></select></div>
+          <div class="field"><label for="season">Сезон</label><select id="season"><option value="summer">Лето / тепло</option><option value="winter">Зима / прохладно</option></select></div>
+          <div class="field wide"><label>Настроение компании</label><div class="seg" id="mood"><button type="button" data-mood="soft">Спокойно</button><button type="button" class="on" data-mood="normal">Средне</button><button type="button" data-mood="party">Хардкор</button></div></div>
+        </div>
+      </div>
+
+      <div class="card result-card">
+        <div class="result-top">
+          <div>
+            <div class="kicker">итог обновляется мгновенно</div>
+            <h2>Список напитков</h2>
+          </div>
+          <div class="badge" id="drinkersBadge">42 гостя пьют</div>
+        </div>
+        <div class="results">
+          <div class="item">
+            <span class="ico"><img src="img/icons/champagne.svg" alt="" aria-hidden="true"></span>
+            <small>Шампанское</small><b id="champagne">—</b><small id="champagneL">для встречи и тостов</small>
+          </div>
+          <div class="item">
+            <span class="ico"><img src="img/icons/wine.svg" alt="" aria-hidden="true"></span>
+            <small>Вино</small><b id="wine">—</b><small id="wineL">красное + белое</small>
+          </div>
+          <div class="item">
+            <span class="ico"><img src="img/icons/strong.svg" alt="" aria-hidden="true"></span>
+            <small>Крепкий алкоголь</small><b id="strong">—</b><small id="strongL">водка/коньяк</small>
+          </div>
+          <div class="item">
+            <span class="ico"><img src="img/icons/beer.svg" alt="" aria-hidden="true"></span>
+            <small>Пиво</small><b id="beer">—</b><small>по темпу застолья</small>
+          </div>
+          <div class="item">
+            <span class="ico"><img src="img/icons/water.svg" alt="" aria-hidden="true"></span>
+            <small>Вода</small><b id="water">—</b><small>газированная + негазированная</small>
+          </div>
+          <div class="item">
+            <span class="ico"><img src="img/icons/juice.svg" alt="" aria-hidden="true" style="filter:none"></span>
+            <small>Соки / морсы</small><b id="juice">—</b><small>для детей и непьющих</small>
+          </div>
+        </div>
+        <div class="summary">
+          <div>
+            <b id="totalText">Готовим нежный, но честный запас.</b>
+            <div class="mini">Расчет примерный. Пиво, вода и соки дополнительно учитывают длительность банкета от 4 до 8 часов.</div>
+          </div>
+          <button type="button" class="copy" id="copyBtn">Скопировать</button>
+        </div>
+      </div>
+
+      <aside class="card side-card" aria-label="Реклама и поддержка проекта">
+        <div class="ad-box">
+          <div><b>Полезный блок</b><span>Здесь появятся свадебные предложения и аккуратная реклама.</span></div>
+        </div>
+        <div class="donate-box">
+          <h3>Поддержать Алкосчёт</h3>
+          <p>Спасибо, что поддерживаете маленький свадебный проект. Это помогает развивать калькулятор и делать его точнее и красивее.</p>
+          <a class="donate-btn" href="https://yoomoney.ru/to/4100119184822517" target="_blank" rel="noopener" aria-label="Поддержать проект">❤️ Поддержать</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="screen article-page" id="articleScreen">
+      <div class="card article-box">
+        <div class="article-scroll">
+          <h2 id="articleTitle">Заголовок статьи</h2>
+          <div class="article-hero"><img id="articleHeroImg" src="img/001.png" alt="Свадебная сервировка с цветами, свечами и бокалами" loading="eager"></div>
+          <div id="articleText" class="article-content"><p>Материал готовится.</p></div>
+          <div class="article-grid"><button type="button" class="ghost" data-route="home">Вернуться к калькулятору</button></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bottom">
+      <span class="legal-links">
+        <button type="button" data-legal="privacy">Политика конфиденциальности</button>
+        <button type="button" data-legal="terms">Условия использования</button>
+      </span>
+    </footer>
+  </main>
+  
+  <div class="toast" id="toast">Список скопирован</div>
+  
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Предыдущее фото"></button>
+      <img class="lightbox-image" id="lightImg" src="" alt="">
+      <button class="lb-nav lb-next" id="lbNext" aria-label="Следующее фото"></button>
+      <button class="close" id="closeLight" aria-label="Закрыть"></button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
