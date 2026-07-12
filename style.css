@@ -553,7 +553,15 @@ body.article-open .app { height: 100dvh; min-height: 100dvh; }
 }
 
 @media(max-width: 600px) {
-  .results { grid-template-columns: 1fr; }
+  .nav { display: none; }
+  .top { gap: 0; }
+
+  .form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field.wide { grid-column: span 2; }
+
+  .results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .item { padding: 12px 10px; min-height: 112px; }
+
   .illustrations { grid-template-columns: 1fr; }
   .summary { grid-template-columns: 1fr; }
   .copy { width: 100%; text-align: center; }
